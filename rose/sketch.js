@@ -5,7 +5,6 @@ let intensity = 255;
 let sat = 127;
 
 function setup() {
-  console.log('buttbutt');
   createCanvas(800, 800);
   colorMode(HSB, 255)
   s[1] = createSlider(1, 10, 8);
