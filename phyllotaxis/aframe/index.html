@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="js/components/phyllotaxis.js"></script>
+    <script>
+    </script>
+  </head>
+  <body>
+    <a-scene stats>
+      <a-light position="0 -5 0" intensity="0.5" type="point"></a-light>
+      <a-light type="ambient" color="#ccc"></a-light>
+
+      <a-entity id="cameraContainer"rotation="-4 7.5 0" position="0 1.6 3">
+        <a-camera></a-camera> 
+      </a-entity>
+      <a-entity phyllotaxis="max: 100" position="-1 2 -3"></a-entity>
+      <a-entity
+        phyllotaxis="max: 1000; 
+                    stride: 10; 
+                    saturation: 10;
+                    lightness: 50;
+                    size: 2;
+                    spread: 0.3;
+                    zDepth: -0.01;
+                    angle: 137.5"
+        position="0 10 0"
+        rotation="90 0 0">
+      </a-entity>
+      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box> -->
+      <!-- <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere> -->
+      <!-- <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder> -->
+      <!-- <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
+      <a-sky color="#444"></a-sky>
+    </a-scene>
+  </body>
+</html>
