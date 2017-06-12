@@ -46,11 +46,12 @@ class Board {
     this.cellSize = cellSize;
     this.delay = 10;
     this.totalCells = 0;
+    this.grid = false;
 
     for(let y = 0; y < (canvasHeight / this.cellSize); y++) {
       this.cells[y] = [];
       for(let x = 0; x < (canvasWidth / this.cellSize);  x++) {
-        this.cells[y][x] = new Cell();// new Cell(random() < 0.05); //random() < 0.05 ? 1 : 0;
+        this.cells[y][x] = new Cell(random() < 0.25);
         this.totalCells++;
       }
     }
@@ -64,19 +65,24 @@ class Board {
   }
 
   draw() {
-    beginShape();
-    stroke(200);
+    stroke(128);
 
     for (let y = 0; y < this.cells.length; y++) {
       for (let x = 0; x < this.cells[y].length; x++) {
         const cell = this.cells[y][x];
         cell.update();
+        if (!cell.alive && !this.grid) { continue; }
+        beginShape();
+        stroke(128);
         if (cell.alive) { fill(128); }
-        else { noFill(); }
-        rect(x * this.cellSize, y * this.cellSize, this.cellSize, this.cellSize);
+        else  { noFill(); }
+        rect(x * this.cellSize,
+              y * this.cellSize,
+              this.cellSize,
+              this.cellSize);
+        endShape();
       }
     }
-    endShape();
     return this;
   }
 
@@ -140,9 +146,9 @@ function setup() {
     board.paused = !board.paused;
   });
   background(56);
-  frameRate(120);
-  board = new Board(width, height, 40);
-  board.delay = 120;
+  frameRate(60);
+  board = new Board(width, height, 5);
+  board.delay = 2;
   board.draw();
 }
 
