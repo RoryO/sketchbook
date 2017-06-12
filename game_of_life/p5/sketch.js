@@ -100,7 +100,7 @@ class Board {
     }
   }
 
-  getNumAdjacentAt(x, y, debug=false) {
+  getNumAdjacentAt(x, y) {
     let n = 0;
 
     for (let v = -1; v <= 1; v++) {
@@ -120,7 +120,6 @@ class Board {
 
     n -= this.cells[y][x].toNumber();
 
-    if (debug) { debugger; }
     return n;
   }
 }
