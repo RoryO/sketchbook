@@ -166,6 +166,7 @@ function upto(n, f) {
 }
 
 let things = [];
+let path = new Path();
 let attractor, repulsor;
 
 function setup() {
@@ -179,6 +180,8 @@ function setup() {
     let mass = random(1, 5);
     things.push(new MotionBody(x, y, mass));
   });
+
+  path.add(100, 100).add(200, 200);
 }
 
 function draw() {
@@ -195,6 +198,7 @@ function draw() {
   fill(color(204, 255, 0));
   ellipse(0, 0, 15);
   pop();
+  path.draw();
 
   for (let thing of things) {
     // gravity
