@@ -1,7 +1,8 @@
 class Path {
   constructor(radius=50, ...points) {
+    this.radius = radius;
     this.points = [];
-    for (point of points) {
+    for (let point of points) {
       if (!point instanceof p5.Vector) { continue; }
       this.points.push(point);
     }
@@ -19,11 +20,14 @@ class Path {
 
   draw() {
     push();
-
-    beginShape(LINES);
-    for(point of this.points) {
-      vertex(point.x, point.y);
+    noFill();
+    beginShape();
+    stroke(128);
+    strokeWeight(this.radius);
+    for(let p of this.points) {
+      vertex(p.x, p.y);
     }
+
     endShape();
     pop();
     return this;
@@ -181,7 +185,13 @@ function setup() {
     things.push(new MotionBody(x, y, mass));
   });
 
-  path.add(100, 100).add(200, 200);
+  path.add(100, 100).
+    add(200, 200).
+    add(100, 300).
+    add(500, 200).
+    add(300, 600).
+    add(600, 700).
+    add(800, 400);
 }
 
 function draw() {
